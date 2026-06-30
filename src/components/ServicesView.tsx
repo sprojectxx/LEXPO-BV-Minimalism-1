@@ -119,12 +119,12 @@ export default function ServicesView({ setActiveView }: ServicesViewProps) {
                 </div>
                 <h3 className="font-display text-lg font-bold text-brand-primary uppercase">FMCG Distribution</h3>
                 <p className="mt-3 text-xs leading-relaxed text-brand-muted font-sans">
-                  Efficient clearance and cold-chain supply coordination for beverages, confectioneries, and packaged food products. We secure specialized Netherlands excise permits, custom health certificates, and phytosanitary filings.
+                  Efficient logistics and cold-chain supply coordination for beverages, confectioneries, and packaged food products. We manage specialized Netherlands excise permits, custom health certificates, and phytosanitary filings.
                 </p>
               </div>
               <div className="relative z-10 mt-4 text-[10px] font-mono text-zinc-500 uppercase tracking-widest flex items-center gap-1.5 border-t border-zinc-200 pt-3">
                 <span className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
-                Excise &amp; Food-Safety Clearance
+                Excise &amp; Food-Safety Compliance
               </div>
             </div>
 
