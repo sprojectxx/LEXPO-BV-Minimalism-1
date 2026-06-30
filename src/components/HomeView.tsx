@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { 
-  ArrowRight, Shield, Globe2, Zap, Landmark, Smartphone, 
+import {
+  ArrowRight, Shield, Globe2, Zap, Landmark, Smartphone,
   Tv, Gamepad2, PackageCheck, Ship, Box, Layers, HelpCircle, Eye
 } from 'lucide-react';
 import { ActiveView } from '../types';
@@ -34,7 +34,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
       title: 'Mobile & Accessories',
       desc: 'Rapid wholesale delivery of flagship smartphones, tablets, premium protective casings, charging grids, and genuine replacement displays.',
       icon: Smartphone,
-      img: '/src/assets/images/mobile_accessories_grid_1782841053699.jpg',
+      img: '/src/assets/images/mobile_accessories_grid_1782841053699.png',
       specs: ['Lithium-Safe Transit', 'OEM Sourced', 'Standard Transit']
     },
     {
@@ -42,7 +42,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
       title: 'Gaming & PC Hardware',
       desc: 'High-availability sourcing of advanced graphics cards, processors, storage units, cooling systems, and specialized esports components.',
       icon: Gamepad2,
-      img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&q=80&w=600',
+      img: '/src/assets/images/gaming_hardware_grid.png',
       specs: ['Secured Warehouses', 'Direct-from-Brand', 'Anti-Scalper Control']
     },
     {
@@ -50,7 +50,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
       title: 'FMCG & Premium Beverages',
       desc: 'Supply chain management for Netherlands premium beers, specialty beverages, fine confectioneries, and high-demand shelf-stable consumer packaged goods.',
       icon: Ship,
-      img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=600',
+      img: '/src/assets/images/beverages_grid.png',
       specs: ['Climate-Controlled', 'Import Compliant', 'Standard Inspected']
     }
   ];
@@ -80,14 +80,14 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
       desc: 'Full trading inquiries receive binding quotes and routing feasibility plans within 2 hours from our operations team.'
     },
     {
-       icon: Globe2,
-       title: 'Integrated Hub Network',
-       desc: 'Major Netherlands-anchored terminal nodes coordinating continuous logistics, regulatory clearances, and localized compliance.'
-     },
+      icon: Globe2,
+      title: 'Integrated Hub Network',
+      desc: 'Major Netherlands-anchored terminal nodes coordinating continuous logistics, regulatory clearances, and localized compliance.'
+    },
     {
       icon: Shield,
       title: 'Netherlands Compliance Assurance',
-      desc: 'Every shipment meets rigorous Dutch and European standards, quality certifications, and complete regulatory declarations.'
+      desc: 'Every shipment meets rigorous Netherlands standards, quality certifications, and complete regulatory declarations.'
     },
     {
       icon: Landmark,
@@ -99,15 +99,15 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
   return (
     <div id="home-view-container" className="flex flex-col">
       {/* Hero Section */}
-      <section 
-        id="home-hero" 
+      <section
+        id="home-hero"
         className="relative bg-[#0b0c10] text-white pt-24 pb-32 overflow-hidden border-b border-zinc-800"
       >
         {/* Background Shipping image with pattern overlay */}
         <div className="absolute inset-0 z-0 opacity-15">
-          <img 
-            src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&q=80&w=1600" 
-            alt="Maritime Port" 
+          <img
+            src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&q=80&w=1600"
+            alt="Maritime Port"
             className="w-full h-full object-cover filter contrast-125 brightness-75"
             referrerPolicy="no-referrer"
           />
@@ -126,7 +126,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
             {/* Main Title */}
             <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl uppercase leading-none">
               Enterprise Precision.<br />
-              <span className="text-zinc-400">Dutch Trade.</span>
+              <span className="text-zinc-400">Netherlands Trade.</span>
             </h1>
 
             {/* Description */}
@@ -177,7 +177,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
       <section id="corporate-profile" className="py-24 bg-zinc-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 items-center">
-            
+
             {/* Left Col - text */}
             <div className="flex flex-col gap-6">
               <h2 className="font-display text-3xl font-extrabold tracking-tight text-brand-primary sm:text-4xl uppercase">
@@ -202,7 +202,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
                   <Box className="h-5 w-5 text-brand-accent shrink-0 mt-0.5" />
                   <div>
                     <h5 className="font-semibold text-sm text-brand-primary">Structured Distribution</h5>
-                    <p className="text-xs text-brand-muted mt-0.5">Efficient cargo dispatch and reliable routing across Dutch and European channels.</p>
+                    <p className="text-xs text-brand-muted mt-0.5">Efficient cargo dispatch and reliable routing across Netherlands.</p>
                   </div>
                 </div>
               </div>
@@ -211,14 +211,14 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
             {/* Right Col - Warehouse Image with Overlapping Coordinate Badge */}
             <div className="relative">
               <div className="overflow-hidden rounded-lg shadow-xl aspect-16/10">
-                <img 
-                  src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800" 
-                  alt="Netherlands Warehouse Hub" 
+                <img
+                  src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800"
+                  alt="Netherlands Warehouse Hub"
                   className="w-full h-full object-cover brightness-95"
                   referrerPolicy="no-referrer"
                 />
               </div>
-              
+
               {/* Overlapping Absolute Coordinate Badge */}
               <div className="absolute -bottom-6 -right-2 md:right-6 bg-[#0a0a0a] text-white p-5 border border-zinc-800 shadow-2xl rounded max-w-xs font-mono">
                 <div className="text-[9px] uppercase tracking-widest text-brand-accent font-bold">
@@ -271,9 +271,9 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
                 >
                   {/* Full color rich background image that zooms on card hover */}
                   <div className="absolute inset-0 z-0 overflow-hidden">
-                    <img 
-                      src={sector.img} 
-                      alt={sector.title} 
+                    <img
+                      src={sector.img}
+                      alt={sector.title}
                       className={`w-full h-full object-cover transition-transform duration-700 ease-out ${isHovered ? 'scale-110' : 'scale-100'}`}
                       referrerPolicy="no-referrer"
                     />
@@ -308,8 +308,8 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
                       <div className="h-[1px] bg-white/15 my-3" />
                       <div className="flex flex-wrap gap-1.5">
                         {sector.specs.map((spec, sidx) => (
-                          <span 
-                            key={sidx} 
+                          <span
+                            key={sidx}
                             className="font-mono text-[9px] font-bold tracking-wider px-2.5 py-1 rounded-sm bg-white/10 backdrop-blur-sm text-white border border-white/10 transition-all duration-300 group-hover:border-brand-accent/20 group-hover:bg-brand-accent/10"
                           >
                             {spec}
@@ -339,9 +339,9 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {operationSteps.map((step, i) => (
-              <div 
+              <div
                 id={`operate-step-${step.step}`}
-                key={i} 
+                key={i}
                 className="bg-white rounded-lg border border-brand-border p-8 shadow-sm flex flex-col justify-between"
               >
                 <div>

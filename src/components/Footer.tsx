@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Anchor, ArrowRight, ShieldCheck, Mail, CheckCircle } from 'lucide-react';
+import { Anchor, ArrowRight, Mail, CheckCircle } from 'lucide-react';
 import { ActiveView } from '../types';
 
 interface FooterProps {
@@ -47,10 +47,6 @@ export default function Footer({ setActiveView }: FooterProps) {
               Operational excellence in sourcing, logistics, and Netherlands wholesale distribution. Connecting leading consumer tech and FMCG brands with robust, secure, and compliant supply chains.
             </p>
 
-            <div className="flex items-center gap-2 text-xs font-mono text-zinc-500 bg-zinc-900/50 p-3 rounded border border-zinc-800/60 max-w-xl">
-              <ShieldCheck className="h-4 w-4 text-zinc-400 shrink-0" />
-              <span>Our Netherlands Hub holds premium regulatory certifications for accelerated transit.</span>
-            </div>
           </div>
 
           {/* Bulletin Subscription Column */}

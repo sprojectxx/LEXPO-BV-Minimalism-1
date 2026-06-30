@@ -168,7 +168,7 @@ export default function PortfolioView() {
               Lexpo Trade Insights
             </h2>
             <p className="text-brand-muted text-sm font-sans">
-              Stay updated with essential regulatory updates, Dutch and European semiconductor freight statistics, and custom compliance briefs written by our desk leads.
+              Stay updated with essential regulatory updates, Netherlands and international semiconductor freight statistics, and custom compliance briefs written by our desk leads.
             </p>
           </div>
 

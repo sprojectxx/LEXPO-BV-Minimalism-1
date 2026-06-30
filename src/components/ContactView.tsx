@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
   Building2, Mail, Phone, Clock, Send, ShieldCheck, MapPin, 
-  HelpCircle, CheckCircle2, MessageSquare, ArrowRight, UserCheck, RefreshCw 
+  HelpCircle, CheckCircle2, ArrowRight, UserCheck, RefreshCw 
 } from 'lucide-react';
-import { TradeInquiry, ChatMessage } from '../types';
+import { TradeInquiry } from '../types';
 
 export default function ContactView() {
   // Form States
@@ -17,16 +17,7 @@ export default function ContactView() {
   const [formError, setFormError] = useState<string | null>(null);
   const [successInquiry, setSuccessInquiry] = useState<TradeInquiry | null>(null);
 
-  // Chat States
-  const [chatInput, setChatInput] = useState('');
-  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
-    {
-      id: 'msg-init',
-      sender: 'assistant',
-      text: 'Good day. I am the Lexpo B.V. Automated Trade Specialist. I can advise you on Netherlands trade regulations, CE approvals, fiscal representation, or FMCG cold-chain requirements. How may I assist you today?',
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    }
-  ]);
+
 
   const handleInquirySubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,79 +29,57 @@ export default function ContactView() {
 
     setSubmitting(true);
 
-    setTimeout(() => {
-      const uniqueId = `LXP-REQ-${Math.floor(100000 + Math.random() * 900000)}`;
-      const newInquiry: TradeInquiry = {
-        id: uniqueId,
-        fullName,
+    fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: fullName,
         company,
         email,
         subject,
         message,
-        status: 'Pending',
-        timestamp: new Date().toLocaleString()
-      };
+      }),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || 'Failed to send inquiry.');
+        }
+        return data;
+      })
+      .then(() => {
+        const uniqueId = `LXP-REQ-${Math.floor(100000 + Math.random() * 900000)}`;
+        const newInquiry: TradeInquiry = {
+          id: uniqueId,
+          fullName,
+          company,
+          email,
+          subject,
+          message,
+          status: 'Pending',
+          timestamp: new Date().toLocaleString()
+        };
 
-      setSuccessInquiry(newInquiry);
-      setSubmitting(false);
+        setSuccessInquiry(newInquiry);
 
-      // Reset form
-      setFullName('');
-      setCompany('');
-      setEmail('');
-      setSubject('');
-      setMessage('');
-    }, 1500);
+        // Reset form
+        setFullName('');
+        setCompany('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+      })
+      .catch((err) => {
+        setFormError(err.message || 'An unexpected error occurred.');
+      })
+      .finally(() => {
+        setSubmitting(false);
+      });
   };
 
-  const handleChatSend = (e?: React.FormEvent, customText?: string) => {
-    if (e) e.preventDefault();
-    const query = customText || chatInput;
-    if (!query.trim()) return;
 
-    const userMsg: ChatMessage = {
-      id: `msg-user-${Date.now()}`,
-      sender: 'user',
-      text: query,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    };
-
-    setChatMessages(prev => [...prev, userMsg]);
-    setChatInput('');
-
-    // Simulated Intelligent Trade Advisor response matching keywords
-    setTimeout(() => {
-      let responseText = '';
-      const norm = query.toLowerCase();
-
-      if (norm.includes('excise') || norm.includes('beverage') || norm.includes('tax') || norm.includes('fmcg')) {
-        responseText = `Regarding FMCG/Beverage Excise:\n\nLexpo B.V. supports standard import compliance and logistics coordination for FMCG and beverage shipments in the Netherlands. We facilitate proper regulatory filing, tax documentation, and coordinate transport routes to manage transit steps seamlessly. We handle standard representations to support foreign trade partners.`;
-      } else if (norm.includes('ce') || norm.includes('electronic') || norm.includes('gaming') || norm.includes('certif')) {
-        responseText = `Regarding Consumer Electronics & Compliance Standards:\n\nAll electronics entering the Netherlands must verify compliance. Our compliance desk in our Netherlands terminal conducts physical inspections, scans OEM serial numbers, and audits declaration files to confirm industry standard specifications are fulfilled. We log serial keys to ensure zero-diversion and prevent counterfeits from entering distributors' channels.`;
-      } else if (norm.includes('singapore') || norm.includes('asia') || norm.includes('apac')) {
-        responseText = `Singapore Gateway Node Operations:\n\nOur Singapore hub coordinates sub-24-hour transshipment for high-value semiconductor parts and tech items in APAC. We support automated product sorting and direct intermodal shipping lanes linking ASEAN ports with our Netherlands master hub. Average cargo dispatch SLA in Singapore is under 2 hours.`;
-      } else if (norm.includes('quote') || norm.includes('fee') || norm.includes('cost') || norm.includes('rate')) {
-        responseText = `Pricing and Quota Inquiries:\n\nTo provide an official trade quote, our desk requires a detailed manifest (CBM volume, net weights, CE certs, and country of origin). You can utilize the "Request Sourcing Proposal" form on our Contact Page or Services Tab to submit your request. Our Netherlands headquarters commits to a 2-hour response window.`;
-      } else {
-        responseText = `Thank you for your message. Lexpo B.V. coordinates international wholesale logistics, standard warehousing, and trade clearance under strict Netherlands compliance guidelines. \n\nTo discuss this sourcing project in detail, please submit an official inquiry through the form, or email our Netherlands trade desk directly at trade@lexpo.nl. We look forward to connecting.`;
-      }
-
-      const assistantMsg: ChatMessage = {
-        id: `msg-assistant-${Date.now()}`,
-        sender: 'assistant',
-        text: responseText,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
-
-      setChatMessages(prev => [...prev, assistantMsg]);
-    }, 1000);
-  };
-
-  const chatPrompts = [
-    'How do trade compliance and standard VAT filing operate in the Netherlands?',
-    'What CE certification rules apply to premium consumer electronics?',
-    'What are the operations specifications of the Singapore Hub?'
-  ];
 
   return (
     <div id="contact-view-container" className="flex flex-col">
@@ -151,7 +120,7 @@ export default function ContactView() {
                 )}
                 {/* Full Name field */}
                 <div className="relative border-b border-zinc-300 focus-within:border-brand-accent transition-colors py-1.5">
-                  <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-400 font-mono">Full Name *</label>
+                  <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-700 font-mono">Full Name *</label>
                   <input
                     id="contact-form-name"
                     type="text"
@@ -165,7 +134,7 @@ export default function ContactView() {
 
                 {/* Company field */}
                 <div className="relative border-b border-zinc-300 focus-within:border-brand-accent transition-colors py-1.5">
-                  <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-400 font-mono">Company Name *</label>
+                  <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-700 font-mono">Company Name *</label>
                   <input
                     id="contact-form-company"
                     type="text"
@@ -179,7 +148,7 @@ export default function ContactView() {
 
                 {/* Email field */}
                 <div className="relative border-b border-zinc-300 focus-within:border-brand-accent transition-colors py-1.5">
-                  <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-400 font-mono">Corporate Email Address *</label>
+                  <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-700 font-mono">Corporate Email Address *</label>
                   <input
                     id="contact-form-email"
                     type="email"
@@ -193,7 +162,7 @@ export default function ContactView() {
 
                 {/* Inquiry Subject */}
                 <div className="relative border-b border-zinc-300 focus-within:border-brand-accent transition-colors py-1.5">
-                  <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-400 font-mono">Inquiry Subject *</label>
+                  <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-700 font-mono">Inquiry Subject *</label>
                   <input
                     id="contact-form-subject"
                     type="text"
@@ -207,7 +176,7 @@ export default function ContactView() {
 
                 {/* Message field */}
                 <div className="relative border-b border-zinc-300 focus-within:border-brand-accent transition-colors py-1.5">
-                  <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-400 font-mono">Prospectus Details / Message *</label>
+                  <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-700 font-mono">Prospectus Details / Message *</label>
                   <textarea
                     id="contact-form-message"
                     required
@@ -341,93 +310,7 @@ export default function ContactView() {
         </div>
       </section>
 
-      {/* Interactive Compliance advisory desk Chat specialist */}
-      <section id="chat-specialist" className="py-24 bg-zinc-50 border-b border-brand-border">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 items-start">
-            
-            {/* Left Col: Chat Guide */}
-            <div className="lg:col-span-5 flex flex-col gap-4 font-sans">
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-brand-primary uppercase">
-                Trade Advisor AI Assistant
-              </h2>
-              <p className="text-brand-muted text-xs leading-relaxed font-sans">
-                Review Netherlands regulatory standards, CE import guidelines, or duty suspend warehouses on-demand. Select a suggested prompt or submit a custom wholesale query to receive instant advice.
-              </p>
 
-              {/* Chat Prompts suggestions */}
-              <div className="flex flex-col gap-2 mt-4">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400">Suggested Inquiries</span>
-                {chatPrompts.map((prompt, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => handleChatSend(undefined, prompt)}
-                    className="text-left p-3 rounded bg-white hover:bg-brand-light border border-brand-border text-xs text-brand-primary leading-relaxed transition-all flex items-center justify-between group"
-                  >
-                    <span>{prompt}</span>
-                    <ArrowRight className="h-4 w-4 text-zinc-300 group-hover:text-brand-accent group-hover:translate-x-1 transition-all shrink-0" />
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Col: Chat Screen */}
-            <div className="lg:col-span-7 bg-white border border-brand-border rounded-lg shadow-sm flex flex-col h-[480px]">
-              
-              {/* Chat Header */}
-              <div className="bg-[#0b0c10] text-white p-4 rounded-t-lg flex justify-between items-center font-sans border-b border-zinc-800">
-                <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-zinc-300 animate-pulse" />
-                  <div>
-                    <span className="text-xs font-bold font-display uppercase tracking-wider block">Compliance Advisor Desk</span>
-                    <span className="text-[9px] font-mono text-zinc-500">Live Custom Regulatory Assessment</span>
-                  </div>
-                </div>
-                <span className="font-mono text-[9px] text-white font-bold">Netherlands Terminal</span>
-              </div>
-
-              {/* Chat Messages */}
-              <div className="flex-1 p-6 overflow-y-auto space-y-4 font-sans">
-                {chatMessages.map((msg) => (
-                  <div 
-                    key={msg.id} 
-                    className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-                  >
-                    <div className={`max-w-md p-4 rounded text-xs leading-relaxed whitespace-pre-line shadow-sm border ${
-                      msg.sender === 'user' 
-                        ? 'bg-zinc-100 text-brand-primary border-zinc-200 rounded-br-none' 
-                        : 'bg-zinc-50 text-zinc-800 border-zinc-200 rounded-bl-none'
-                    }`}>
-                      <p>{msg.text}</p>
-                      <span className="block text-[8px] font-mono text-zinc-400 text-right mt-1.5">{msg.timestamp}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Chat Form */}
-              <form onSubmit={handleChatSend} className="p-4 border-t border-brand-border bg-zinc-50 rounded-b-lg flex gap-2">
-                <input
-                  type="text"
-                  placeholder="Ask about VAT deferral, CE guidelines, Singapore hub..."
-                  value={chatInput}
-                  onChange={(e) => setChatInput(e.target.value)}
-                  className="flex-1 rounded border border-zinc-300 bg-white p-3 text-xs focus:outline-none focus:border-brand-accent text-brand-primary"
-                />
-                <button
-                  type="submit"
-                  className="rounded-sm bg-brand-accent text-black hover:bg-brand-accent-hover px-4 py-3 text-xs font-bold uppercase transition-colors font-mono flex items-center justify-center"
-                >
-                  <MessageSquare className="h-4 w-4" />
-                </button>
-              </form>
-
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* SUCCESS INQUIRY MODAL */}
       {successInquiry && (
