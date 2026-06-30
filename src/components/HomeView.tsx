@@ -5,6 +5,10 @@ import {
   Tv, Gamepad2, PackageCheck, Ship, Box, Layers, HelpCircle, Eye
 } from 'lucide-react';
 import { ActiveView } from '../types';
+import consumerElectronicsImg from '../assets/images/consumer_electronics_grid_1782840622146.jpg';
+import mobileAccessoriesImg from '../assets/images/mobile_accessories_grid_1782841053699.png';
+import gamingHardwareImg from '../assets/images/gaming_hardware_grid.png';
+import beveragesImg from '../assets/images/beverages_grid.png';
 
 interface HomeViewProps {
   setActiveView: (view: ActiveView) => void;
@@ -26,7 +30,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
       title: 'Consumer Electronics',
       desc: 'Master distribution of gaming consoles, premium smart devices, high-end audio setups, and visual equipment directly from authorized manufacturing pipelines.',
       icon: Tv,
-      img: '/src/assets/images/consumer_electronics_grid_1782840622146.jpg',
+      img: consumerElectronicsImg,
       specs: ['Standard Compliant', 'CE Audited', 'Serial Number Tracking']
     },
     {
@@ -34,7 +38,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
       title: 'Mobile & Accessories',
       desc: 'Rapid wholesale delivery of flagship smartphones, tablets, premium protective casings, charging grids, and genuine replacement displays.',
       icon: Smartphone,
-      img: '/src/assets/images/mobile_accessories_grid_1782841053699.png',
+      img: mobileAccessoriesImg,
       specs: ['Lithium-Safe Transit', 'OEM Sourced', 'Standard Transit']
     },
     {
@@ -42,7 +46,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
       title: 'Gaming & PC Hardware',
       desc: 'High-availability sourcing of advanced graphics cards, processors, storage units, cooling systems, and specialized esports components.',
       icon: Gamepad2,
-      img: '/src/assets/images/gaming_hardware_grid.png',
+      img: gamingHardwareImg,
       specs: ['Secured Warehouses', 'Direct-from-Brand', 'Anti-Scalper Control']
     },
     {
@@ -50,7 +54,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
       title: 'FMCG & Premium Beverages',
       desc: 'Supply chain management for Netherlands premium beers, specialty beverages, fine confectioneries, and high-demand shelf-stable consumer packaged goods.',
       icon: Ship,
-      img: '/src/assets/images/beverages_grid.png',
+      img: beveragesImg,
       specs: ['Climate-Controlled', 'Import Compliant', 'Standard Inspected']
     }
   ];
