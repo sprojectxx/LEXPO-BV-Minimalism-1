@@ -1,0 +1,6 @@
+{
+  "name": "Lexpo Trade Terminal",
+  "description": "Lexpo B.V. is a premier global trading, wholesale distribution, and logistics firm. Experience high-precision operations, real-time freight calculating, interactive catalog trackers, and an intelligent B2B trade advisory coordinator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
