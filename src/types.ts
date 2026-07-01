@@ -25,7 +25,7 @@ export interface CargoItem {
   id: string;
   trackerCode: string;
   description: string;
-  category: 'Electronics' | 'FMCG' | 'Hardware' | 'Automotive' | 'Beverages';
+  category: 'Electronics' | 'Hardware' | 'Automotive';
   origin: string;
   destination: string;
   status: CargoStatus;

@@ -100,7 +100,7 @@ export default function ServicesView({ setActiveView }: ServicesViewProps) {
               </div>
             </div>
 
-            {/* Card 4: FMCG Logistics with background container look */}
+            {/* Card 4: Global Logistics with background container look */}
             <div id="service-card-04" className="border border-brand-border rounded-lg p-8 flex flex-col justify-between min-h-[300px] bg-zinc-100/40 relative overflow-hidden">
               <div className="absolute inset-0 z-0 opacity-5">
                 <img 
@@ -117,14 +117,14 @@ export default function ServicesView({ setActiveView }: ServicesViewProps) {
                   </div>
                   <span className="font-mono text-xs text-zinc-400 font-bold">// SERVICE 04</span>
                 </div>
-                <h3 className="font-display text-lg font-bold text-brand-primary uppercase">FMCG Distribution</h3>
+                <h3 className="font-display text-lg font-bold text-brand-primary uppercase">Global Logistics</h3>
                 <p className="mt-3 text-xs leading-relaxed text-brand-muted font-sans">
-                  Efficient logistics and cold-chain supply coordination for beverages, confectioneries, and packaged food products. We manage specialized Netherlands excise permits, custom health certificates, and phytosanitary filings.
+                  Secure warehousing, container consolidation, and multi-modal freight transport. We coordinate domestic and international cargo shipping by road, rail, air, and sea to ensure reliable supply lines.
                 </p>
               </div>
               <div className="relative z-10 mt-4 text-[10px] font-mono text-zinc-500 uppercase tracking-widest flex items-center gap-1.5 border-t border-zinc-200 pt-3">
                 <span className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
-                Excise &amp; Food-Safety Compliance
+                End-to-End Freight Management
               </div>
             </div>
 

@@ -44,7 +44,7 @@ export default function Footer({ setActiveView }: FooterProps) {
             </div>
             
             <p className="text-zinc-400 text-sm leading-relaxed max-w-xl">
-              Operational excellence in sourcing, logistics, and Netherlands wholesale distribution. Connecting leading consumer tech and FMCG brands with robust, secure, and compliant supply chains.
+              Operational excellence in sourcing, logistics, and Netherlands wholesale distribution. Connecting leading consumer tech and hardware brands with robust, secure, and compliant supply chains.
             </p>
 
           </div>

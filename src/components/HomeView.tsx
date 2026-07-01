@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import {
   ArrowRight, Shield, Globe2, Zap, Landmark, Smartphone,
-  Tv, Gamepad2, PackageCheck, Ship, Box, Layers, HelpCircle, Eye
+  Tv, Gamepad2, PackageCheck, Box, Layers, HelpCircle, Eye
 } from 'lucide-react';
 import { ActiveView } from '../types';
 import consumerElectronicsImg from '../assets/images/consumer_electronics_grid_1782840622146.jpg';
 import mobileAccessoriesImg from '../assets/images/mobile_accessories_grid_1782841053699.png';
 import gamingHardwareImg from '../assets/images/gaming_hardware_grid.png';
-import beveragesImg from '../assets/images/beverages_grid.png';
 
 interface HomeViewProps {
   setActiveView: (view: ActiveView) => void;
@@ -48,14 +47,6 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
       icon: Gamepad2,
       img: gamingHardwareImg,
       specs: ['Secured Warehouses', 'Direct-from-Brand', 'Anti-Scalper Control']
-    },
-    {
-      id: 4,
-      title: 'FMCG & Premium Beverages',
-      desc: 'Supply chain management for Netherlands premium beers, specialty beverages, fine confectioneries, and high-demand shelf-stable consumer packaged goods.',
-      icon: Ship,
-      img: beveragesImg,
-      specs: ['Climate-Controlled', 'Import Compliant', 'Standard Inspected']
     }
   ];
 
@@ -135,7 +126,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
 
             {/* Description */}
             <p className="mt-6 text-lg leading-relaxed text-zinc-300 font-sans max-w-2xl">
-              Lexpo B.V. is a premier Netherlands-based trading and distribution enterprise. We synchronize brand distribution, wholesale logistics, and regulatory compliance with clockwork accuracy across our entire partner network.
+              Lexpo B.V. is a premier Netherlands-based wholesale trading and distribution enterprise. We synchronize bulk sourcing, brand distribution, and regulatory compliance with clockwork accuracy across our entire partner network.
             </p>
 
             {/* Actions */}
@@ -185,13 +176,13 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
             {/* Left Col - text */}
             <div className="flex flex-col gap-6">
               <h2 className="font-display text-3xl font-extrabold tracking-tight text-brand-primary sm:text-4xl uppercase">
-                A Netherlands-Based Partner Built on Operational Excellence.
+                A Netherlands-Based Wholesaler Built on Operational Excellence.
               </h2>
               <p className="text-brand-muted leading-relaxed font-sans text-base">
-                Lexpo B.V. combines extensive experience in Netherlands trade coordination, supply chain logistics, and structured distribution networks to support enterprise partners.
+                Lexpo B.V. is a wholesale trading company combining extensive experience in bulk sourcing, international trade coordination, and structured distribution networks to support enterprise partners.
               </p>
               <p className="text-brand-muted leading-relaxed font-sans text-base">
-                Whether streamlining cargo routing for Netherlands distribution or securing continuous transport lanes for wholesale commodities, we act as an ironclad extension of your operations.
+                Whether streamlining cargo routing for Netherlands distribution or securing continuous transport lanes for high-volume wholesale commodities, we act as an ironclad extension of your operations.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 font-sans">
@@ -256,7 +247,7 @@ export default function HomeView({ setActiveView }: HomeViewProps) {
           </div>
 
           {/* Bento Grid */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {tradeSectors.map((sector, idx) => {
               const Icon = sector.icon;
               const isHovered = hoveredTradeCard === sector.id;

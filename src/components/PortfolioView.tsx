@@ -72,7 +72,7 @@ export default function PortfolioView() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 font-sans">
             {[
               { id: 'sec-1', title: 'Consumer Electronics', desc: 'Authorized wholesale pipelines for next-gen gaming consoles and high-value tech devices.' },
-              { id: 'sec-2', title: 'FMCG & Beverages', desc: 'Secure temperature-sensitive transport for premium Netherlands spirits and fast-moving foods.' },
+              { id: 'sec-2', title: 'Hardware & Accessories', desc: 'Secure wholesale pipelines for mobile accessories, replacement components, and hardware accessories.' },
               { id: 'sec-3', title: 'Retail Distribution', desc: 'Consolidated freight lanes for regional commercial department stores and online merchants.' },
               { id: 'sec-4', title: 'Wholesale Networks', desc: 'Bulk supply matching and credit lanes for multi-regional logistics partners and warehouses.' },
               { id: 'sec-5', title: 'Import/Export Escrow', desc: 'Comprehensive trade compliance, duty calculation, excise payment, and physical compliance representation.' }

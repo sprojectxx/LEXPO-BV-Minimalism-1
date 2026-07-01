@@ -8,7 +8,7 @@ export const GLOBAL_HUBS: Record<string, GlobalHub> = {
     coordinates: '50.1109° N, 8.6821° E',
     lat: 50.1109,
     lng: 8.6821,
-    description: 'Serving as Lexpo’s primary headquarters, our Netherlands facility is strategically integrated into premier transport networks. Here, we manage master cargo transit, sea-to-rail intermodal transfers, and high-security storage for consumer electronics and premium FMCG cargoes.',
+    description: 'Serving as Lexpo’s primary headquarters, our Netherlands facility is strategically integrated into premier transport networks. Here, we manage master cargo transit, sea-to-rail intermodal transfers, and high-security storage for consumer electronics and premium hardware cargoes.',
     stats: {
       warehouseCap: '124,000 m²',
       weeklyRoutes: 140,
@@ -40,7 +40,7 @@ export const GLOBAL_HUBS: Record<string, GlobalHub> = {
     coordinates: '25.2048° N, 55.2708° E',
     lat: 25.2048,
     lng: 55.2708,
-    description: 'Connecting the Netherlands, Asia, and Africa, our Dubai hub in Jebel Ali Free Zone serves as a vital cross-docking terminal. We specialize in temperature-controlled FMCG distribution, beverages, and regional trade advisory services for Middle Eastern markets.',
+    description: 'Connecting the Netherlands, Asia, and Africa, our Dubai hub in Jebel Ali Free Zone serves as a vital cross-docking terminal. We specialize in high-volume wholesale distribution, freight logistics, and regional trade advisory services for Middle Eastern markets.',
     stats: {
       warehouseCap: '92,000 m²',
       weeklyRoutes: 110,
@@ -99,8 +99,8 @@ export const CARGO_SHIPMENTS: CargoItem[] = [
   {
     id: 'LXP-77121',
     trackerCode: 'LX-NLD-NYC-771',
-    description: 'Artisanal Beverages & Specialty FMCG Box',
-    category: 'Beverages',
+    description: 'Smart Charging Station Consignment (Batch #12)',
+    category: 'Electronics',
     origin: 'Netherlands Hub',
     destination: 'New York Network (USA)',
     status: 'ready_for_pickup',
@@ -108,7 +108,7 @@ export const CARGO_SHIPMENTS: CargoItem[] = [
     volume: '110 m³',
     departureDate: '2026-06-12',
     arrivalDate: '2026-06-28',
-    temperatureControlled: true
+    temperatureControlled: false
   },
   {
     id: 'LXP-20412',
@@ -127,8 +127,8 @@ export const CARGO_SHIPMENTS: CargoItem[] = [
   {
     id: 'LXP-88511',
     trackerCode: 'LX-DXB-NLD-885',
-    description: 'Specialty Roasted Coffee Beans & Spices',
-    category: 'FMCG',
+    description: 'Smartphone Protective Casings & Displays',
+    category: 'Electronics',
     origin: 'Dubai Corridor (UAE)',
     destination: 'Netherlands Hub',
     status: 'in_transit',
@@ -136,7 +136,7 @@ export const CARGO_SHIPMENTS: CargoItem[] = [
     volume: '140 m³',
     departureDate: '2026-06-22',
     arrivalDate: '2026-07-04',
-    temperatureControlled: true
+    temperatureControlled: false
   }
 ];
 
@@ -163,11 +163,11 @@ export const TRADE_INSIGHTS: TradeInsight[] = [
   },
   {
     id: 'insight-3',
-    title: 'FMCG Cross-Border Logistics: Keeping Cold Chains Unbroken',
-    category: 'FMCG Sourcing',
+    title: 'Trade Finance & Escrow in High-Volume Sourcing',
+    category: 'Sourcing',
     readTime: '5 min read',
     date: 'April 05, 2026',
-    summary: 'How smart multi-sensor telemetry inside shipping containers prevents product spoilage. Exploring our refrigerated warehouse advancements in our Jebel Ali Hub.',
+    summary: 'How secure payment terms, letters of credit (L/C), and Netherlands escrow representation reduce capital risks for cross-border wholesale transactions.',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=600',
     author: 'Amir Al-Mansoori (MENA Manager)'
   }
