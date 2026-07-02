@@ -11,6 +11,39 @@ import ContactView from './components/ContactView';
 export default function App() {
   const [activeView, setActiveView] = useState<ActiveView>('home');
 
+  React.useEffect(() => {
+    // Dynamic SEO Titles and Descriptions
+    let title = "Lexpo B.V. | Netherlands Wholesale Trading & Brand Distribution";
+    let metaDescription = "Lexpo B.V. is a premier Netherlands-based wholesale trading and brand distribution enterprise.";
+
+    switch (activeView) {
+      case 'home':
+        title = "Lexpo B.V. | Netherlands Wholesale Trading & Brand Distribution";
+        metaDescription = "Lexpo B.V. is a premier Netherlands-based wholesale trading and brand distribution enterprise. We synchronize bulk sourcing, brand distribution, and regulatory compliance.";
+        break;
+      case 'services':
+        title = "Services & Solutions | Lexpo B.V.";
+        metaDescription = "Explore our commercial wholesale services, including brand manufacturing agreements, secure escrow, regulatory compliance, and temperature-controlled logistics.";
+        break;
+      case 'portfolio':
+        title = "Trade Network Footprint | Lexpo B.V.";
+        metaDescription = "Browse our secure trade corridors, regional terminal hubs, and live vessel logistics linking the Netherlands with the APAC and Americas regions.";
+        break;
+      case 'contact':
+        title = "Contact Sourcing Desk | Lexpo B.V.";
+        metaDescription = "Submit a sourcing prospectus, coordinate custom clearances, or chat with our live automated compliance advisory desk in the Netherlands.";
+        break;
+    }
+
+    document.title = title;
+    
+    // Update meta description dynamically
+    const metaDescriptionEl = document.querySelector('meta[name="description"]');
+    if (metaDescriptionEl) {
+      metaDescriptionEl.setAttribute('content', metaDescription);
+    }
+  }, [activeView]);
+
   // Render correct view with elegant slide-up/fade animations
   const renderView = () => {
     switch (activeView) {

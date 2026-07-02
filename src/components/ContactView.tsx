@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { 
-  Building2, Mail, Phone, Clock, Send, ShieldCheck, MapPin, 
-  HelpCircle, CheckCircle2, ArrowRight, UserCheck, RefreshCw 
+import {
+  Building2, Mail, Phone, Clock, Send, ShieldCheck, MapPin,
+  HelpCircle, CheckCircle2, ArrowRight, UserCheck, RefreshCw
 } from 'lucide-react';
 import { TradeInquiry } from '../types';
 
@@ -83,7 +83,7 @@ export default function ContactView() {
 
   return (
     <div id="contact-view-container" className="flex flex-col">
-      
+
       {/* Contact Header banner */}
       <section id="contact-hero" className="bg-[#0c0d10] text-white pt-20 pb-16 border-b border-zinc-800 relative">
         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:20px_20px] opacity-30 z-0" />
@@ -104,7 +104,7 @@ export default function ContactView() {
       <section id="contact-details" className="py-20 bg-white border-b border-brand-border font-sans">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
-            
+
             {/* Left side: Clean underline-styled inquiry form */}
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 mb-4">
@@ -218,7 +218,7 @@ export default function ContactView() {
 
             {/* Right side: Hub headquarters details & map */}
             <div className="flex flex-col justify-between gap-10">
-              
+
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-1.5">
                   <h3 className="font-display text-xl font-bold text-brand-primary uppercase">Netherlands Desk</h3>
@@ -236,7 +236,7 @@ export default function ContactView() {
                         The Netherlands
                       </p>
                     </div>
-                    <span className="font-mono text-[9px] text-zinc-400 mt-4">Logistics Operations Node</span>
+                    <span className="font-mono text-[9px] text-zinc-400 mt-4">Wholesale Operations Node</span>
                   </div>
 
                   <div className="bg-zinc-50 p-5 rounded border border-zinc-200 flex flex-col justify-between">
@@ -244,9 +244,8 @@ export default function ContactView() {
                       <Phone className="h-5 w-5 text-brand-accent mb-3" />
                       <h4 className="font-display font-semibold text-xs uppercase tracking-wide text-brand-primary">Direct Desk Channels</h4>
                       <p className="text-xs text-brand-muted mt-1.5 leading-relaxed">
-                        <strong>Email:</strong> trade@lexpo.nl<br />
-                        <strong>Excise Desk:</strong> logistics@lexpo.nl<br />
-                        <strong>Phone Office:</strong> +31 (0)20 408 9200
+                        <strong>Email:</strong> lexpobvnl@gmail.com<br />
+                        {/* <strong>Phone Office:</strong> +31 (0)20 408 9200 */}
                       </p>
                     </div>
                     <span className="font-mono text-[9px] text-zinc-400 mt-4">SLA Operations Office</span>
@@ -256,7 +255,7 @@ export default function ContactView() {
 
               {/* Stylized Vector Mini-Map of Wilhelminakade / Kop van Zuid */}
               <div id="contact-map" className="bg-[#0b0c10] border border-zinc-800 rounded-lg p-5 text-white flex flex-col justify-between min-h-[250px] relative">
-                
+
                 {/* Background blueprint pattern */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800d_1px,transparent_1px),linear-gradient(to_bottom,#8080800d_1px,transparent_1px)] bg-[size:12px_12px] rounded-lg" />
 
@@ -315,7 +314,7 @@ export default function ContactView() {
       {/* SUCCESS INQUIRY MODAL */}
       {successInquiry && (
         <div id="success-modal" className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="bg-white rounded-lg border border-brand-border w-full max-w-md overflow-hidden shadow-2xl font-sans text-xs"
@@ -350,7 +349,7 @@ export default function ContactView() {
             </div>
 
             <div className="bg-zinc-50 px-6 py-4 border-t border-zinc-200 text-right">
-              <button 
+              <button
                 onClick={() => setSuccessInquiry(null)}
                 className="rounded bg-brand-primary text-white hover:bg-zinc-800 px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-wider"
               >
